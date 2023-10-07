@@ -61,9 +61,10 @@ module.exports.UpdateSubCategory = catchAsyncError(async (req, res, next) => {
     slug: slugify(name),
   });
 
-  if (!Subcategory) {
+  if (!Subcategory) { // check if category not founded
     next(new AppError("category not found", 404));
   }
+
   res.json({ massage: "sucsess", Subcategory });
 
 });
