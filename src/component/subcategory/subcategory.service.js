@@ -12,9 +12,6 @@ module.exports.CreateSubCategory = catchAsyncError(async (req, res) => {
     category,
   });
   res.json({ message: "ok", subcategory });
-  // let category = new SubCategoryModel(name);
-  // await category.save();
-  // res.status(200).json(category);
 });
 
 //___________________________________________________GetSubCategories__________________________________________________________________
@@ -29,7 +26,6 @@ module.exports.GetSubCategories = catchAsyncError(async (req, res) => {
 
   let subcategories = await SubCategoryModel.find( filter ).populate("category","name -_id")
   res.json({ massage: "sucsess", subcategories });
-  // res.status(200).json(categories);
 });
 
 //___________________________________________________GetSubCategories_id__________________________________________________________________
@@ -42,8 +38,6 @@ module.exports.GetSubCategory = catchAsyncError(async (req, res, next) => {
     return next(new AppError("category not found", 404));
   }
   res.json({ massage: "sucsess", subcategory });
-
-  // res.status(200).json(category);
 });
 //___________________________________________________deleteSubCategories___________________________________________________________________
 
@@ -53,11 +47,8 @@ module.exports.DeleteSubCategory = catchAsyncError(async (req, res, next) => {
 
   if (!subcategory) {
     return next(new AppError("category not found", 404));
-    //  res.json({ massage: "subcategory not found" });
   }
   res.json({ massage: "sucsess", subcategory });
-
-  // res.status(200).json(category);
 });
 //___________________________________________________UpdateSubCategories___________________________________________________________________
 
@@ -75,5 +66,4 @@ module.exports.UpdateSubCategory = catchAsyncError(async (req, res, next) => {
   }
   res.json({ massage: "sucsess", Subcategory });
 
-  // res.status(200).json(category);
 });
